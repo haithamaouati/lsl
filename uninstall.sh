@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-SCRIPT_NAME="layout"
+SCRIPT_NAME="lsl"
 INSTALL_DIR="$PREFIX/bin"
 SCRIPT_PATH="$INSTALL_DIR/$SCRIPT_NAME"
 
