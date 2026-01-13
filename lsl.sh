@@ -19,7 +19,7 @@ warn() {
 
 show_help() {
     cat <<EOF
-Usage: layout [OPTION]... [DIRECTORY]
+Usage: lsl [OPTION]... [DIRECTORY]
 
 Options:
   -f, --file        show files only
