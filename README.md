@@ -7,8 +7,6 @@ It supports ANSI colors for directories and executable files, and provides optio
 
 ## Features
 
-- Show directories in **blue**.
-- Show executable files in **green**.
 - Handle inaccessible files and directories gracefully.
 - Supports simple flags:
   - `-f`, `--file` — show files only
