@@ -1,21 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+PREFIX="/data/data/com.termux/files/usr"
+BIN_DIR="$PREFIX/bin"
 SCRIPT_NAME="lsl"
-INSTALL_DIR="$PREFIX/bin"
-SCRIPT_PATH="$INSTALL_DIR/$SCRIPT_NAME"
+TARGET_SCRIPT="$BIN_DIR/$SCRIPT_NAME"
 
-# Function to show errors
-die() {
-    echo "Error: $1" >&2
-    exit 1
-}
-
-# Check if the script exists
-if [ ! -f "$SCRIPT_PATH" ]; then
-    die "'$SCRIPT_NAME' is not installed in $INSTALL_DIR."
+if [ ! -f "$TARGET_SCRIPT" ]; then
+    echo "lsl is not installed"
+    exit 0
 fi
 
-# Remove the script
-rm "$SCRIPT_PATH" || die "Failed to remove '$SCRIPT_PATH'."
+rm -f "$TARGET_SCRIPT"
 
-echo "'$SCRIPT_NAME' has been uninstalled from $INSTALL_DIR."
+echo "removed: $TARGET_SCRIPT"
