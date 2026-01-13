@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Termux installer for layout script
-SCRIPT_NAME="layout"
+# Termux installer for lsl script
+SCRIPT_NAME="lsl"
 INSTALL_DIR="$PREFIX/bin"
 SCRIPT_PATH="$(realpath "$0")"
 
@@ -11,7 +11,7 @@ die() {
     exit 1
 }
 
-# Check if layout script exists in current directory
+# Check if lsl script exists in current directory
 if [ ! -f "$SCRIPT_NAME" ]; then
     die "$SCRIPT_NAME not found in current directory."
 fi
