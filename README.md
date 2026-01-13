@@ -1,6 +1,6 @@
-# Layout
+# lsl
 
-`layout` is a lightweight Bash script that displays directory structures in a tree-like format.  
+`lsl` is a lightweight Bash script that displays directory structures in a tree-like format.  
 It supports ANSI colors for directories and executable files, and provides options to filter output.
 
 ---
@@ -19,36 +19,36 @@ It supports ANSI colors for directories and executable files, and provides optio
 
 ## Installation
 
-1. Copy the `layout` script to your Termux environment.
+1. Copy the `lsl` script to your Termux environment.
 2. Make it executable:
 
 ```bash
-chmod +x layout.sh
+chmod +x lsl.sh
 ```
 3. Run it:
 ```
-./layout
+./lsl
 ```
 4. Usage:
 ```
-./layout [OPTION]... [DIRECTORY]
+./lsl [OPTION]... [DIRECTORY]
 ```
 ###### Examples:
 - Show full tree of current directory:
 ```
-./layout
+./lsl
 ```
 - Show only files:
 ```
-./layout -f
+./lsl -f
 ```
 - Show only directories:
 ```
-./layout -d
+./lsl -d
 ```
 - Specify a directory:
 ```
-./layout /sdcard
+./lsl /sdcard
 ```
 > [!NOTE]  
 > - Executable files are highlighted in green.
@@ -60,10 +60,10 @@ chmod +x layout.sh
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=haithamaouati/layout&type=date&legend=top-left)](https://www.star-history.com/#haithamaouati/layout&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=haithamaouati/lsl&type=date&legend=top-left)](https://www.star-history.com/#haithamaouati/lsl&type=date&legend=top-left)
 
 ### Find this repository useful? ❤️
-Support it by joining the [stargazers](https://github.com/haithamaouati/layout/stargazers). ⭐
+Support it by joining the [stargazers](https://github.com/haithamaouati/lsl/stargazers). ⭐
 
 If you want to help even more, please spread the word — share the project on X, Reddit, or with your community so more people discover it.
 
