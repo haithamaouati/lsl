@@ -1,20 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-BLUE="\e[34m"
-GREEN="\e[32m"
-RED="\e[31m"
-RESET="\e[0m"
-
 SHOW_FILES=true
 SHOW_DIRS=true
 
 die() {
-    echo -e "${RED}error:${RESET} $1" >&2
+    echo "error: $1" >&2
     exit 1
 }
 
 warn() {
-    echo -e "${RED}warning:${RESET} $1" >&2
+    echo "warning: $1" >&2
 }
 
 show_help() {
@@ -54,6 +49,10 @@ start_dir="${1:-.}"
 [ -d "$start_dir" ] || die "not a directory: $start_dir"
 [ -r "$start_dir" ] || warn "no read permission: $start_dir"
 
+color_name() {
+    ls --color=always -d "$1" 2>/dev/null | sed 's|.*/||'
+}
+
 dir_layout() {
     local dir="$1"
     local prefix="$2"
@@ -88,22 +87,18 @@ dir_layout() {
             next_prefix="${prefix}│   "
         fi
 
-        name="$(basename "$item")"
-
         if [ -d "$item" ]; then
-            echo -e "${prefix}${branch}${BLUE}${name}/${RESET}"
+            echo -e "${prefix}${branch}$(color_name "$item")/"
             dir_layout "$item" "$next_prefix"
         else
             if [ ! -r "$item" ]; then
-                echo -e "${prefix}${branch}${RED}${name} (no access)${RESET}"
-            elif [ -x "$item" ]; then
-                echo -e "${prefix}${branch}${GREEN}${name}${RESET}"
+                echo -e "${prefix}${branch}$(color_name "$item") (no access)"
             else
-                echo "${prefix}${branch}${name}"
+                echo -e "${prefix}${branch}$(color_name "$item")"
             fi
         fi
     done
 }
 
-$SHOW_DIRS && echo -e "${BLUE}$(basename "$(realpath "$start_dir")")/${RESET}"
+$SHOW_DIRS && echo -e "$(color_name "$start_dir")/"
 dir_layout "$start_dir" ""
