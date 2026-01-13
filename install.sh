@@ -1,29 +1,23 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Termux installer for lsl script
-SCRIPT_NAME="lsl"
-INSTALL_DIR="$PREFIX/bin"
-SCRIPT_PATH="$(realpath "$0")"
+set -e
 
-# Function to show errors
+PREFIX="/data/data/com.termux/files/usr"
+BIN_DIR="$PREFIX/bin"
+SCRIPT_NAME="lsl"
+SOURCE_SCRIPT="./lsl.sh"
+TARGET_SCRIPT="$BIN_DIR/$SCRIPT_NAME"
+
 die() {
-    echo "Error: $1" >&2
+    echo "install error: $1" >&2
     exit 1
 }
 
-# Check if lsl script exists in current directory
-if [ ! -f "$SCRIPT_NAME" ]; then
-    die "$SCRIPT_NAME not found in current directory."
-fi
+[ -f "$SOURCE_SCRIPT" ] || die "lsl.sh not found in current directory"
+[ -d "$BIN_DIR" ] || die "bin directory not found: $BIN_DIR"
 
-# Ensure install directory exists
-mkdir -p "$INSTALL_DIR" || die "Cannot create $INSTALL_DIR"
+cp "$SOURCE_SCRIPT" "$TARGET_SCRIPT"
+chmod +x "$TARGET_SCRIPT"
 
-# Copy script to install directory
-cp "$SCRIPT_NAME" "$INSTALL_DIR/" || die "Failed to copy script."
-
-# Make it executable
-chmod +x "$INSTALL_DIR/$SCRIPT_NAME" || die "Failed to set executable permission."
-
-echo "Installed '$SCRIPT_NAME' to $INSTALL_DIR"
-echo "You can now run it using: $SCRIPT_NAME"
+echo "installed: $TARGET_SCRIPT"
+echo "restart your shell or run 'hash -r' if needed"
